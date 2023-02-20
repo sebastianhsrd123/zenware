@@ -1,0 +1,97 @@
+<div class="container" style="margin-top:70px;margin-bottom:70px;" >
+  <div class="title">
+    <h4>Crear empleado</h4>
+  </div>
+  <form [formGroup]="createForm"  (ngSubmit)="createEmployee();">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Ingrese el nuevo nombre</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese nombre" formControlName="name">
+      <small class="form-text text-muted"
+      *ngIf=" createForm.get('name')?.touched && createForm.get('name')?.errors?.['required']">
+      El campo es requerido*
+  </small>
+  <small class="form-text text-muted"
+      *ngIf=" createForm.get('name')?.touched && createForm.get('name')?.errors?.['maxlength']">
+      El nombre no puede tener mas de 30 caracteres*
+  </small>
+  <small class="form-text text-muted"
+      *ngIf=" createForm.get('name')?.touched && createForm.get('name')?.errors?.['minlength']">
+      El nombre debe tener al menos 3 caracteres*
+  </small>
+  <small class="form-text text-muted"
+      *ngIf=" createForm.get('name')?.touched && createForm.get('name')?.errors?.['pattern']">
+      Utilice solo letras y un espaciado por nombre*
+  </small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail2">Ingrese el nuevo salario</label>
+      <input type="text" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Ingrese salario" formControlName="salary">
+      <small class="form-text text-muted"
+          *ngIf=" createForm.get('salary')?.touched && createForm.get('salary')?.errors?.['required']">
+          El campo es requerido*
+      </small>
+      <small class="form-text text-muted"
+          *ngIf=" createForm.get('salary')?.touched && createForm.get('salary')?.errors?.['maxlength']">
+          El documento no puede tener mas de 20 caracteres*
+      </small>
+      <small class="form-text text-muted"
+          *ngIf=" createForm.get('salary')?.touched && createForm.get('salary')?.errors?.['minlength']">
+          El documento debe tener al menos 4 caracteres*
+      </small>
+      <small class="form-text text-muted"
+          *ngIf=" createForm.get('salary')?.touched && createForm.get('salary')?.errors?.['pattern']">
+          Utilice solo numeros*
+      </small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Ingrese la nueva edad</label>
+      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Ingrese edad" formControlName="age">
+      <small class="form-text text-muted"
+          *ngIf=" createForm.get('age')?.touched && createForm.get('age')?.errors?.['required']">
+          El campo es requerido*
+      </small>
+      <small class="form-text text-muted"
+          *ngIf=" createForm.get('age')?.touched && createForm.get('age')?.errors?.['maxlength']">
+          El documento no puede tener mas de 20 caracteres*
+      </small>
+      <small class="form-text text-muted"
+          *ngIf=" createForm.get('age')?.touched && createForm.get('age')?.errors?.['minlength']">
+          El documento debe tener al menos 4 caracteres*
+      </small>
+      <small class="form-text text-muted"
+          *ngIf=" createForm.get('age')?.touched && createForm.get('age')?.errors?.['pattern']">
+          Utilice solo numeros*
+      </small>
+    </div>
+    <div class="d-grid gap-2" style="margin-top:20px;">
+    <button type="submit" [disabled]="!createForm.valid" class="btn btn-success">Crear empleado</button>
+    <small *ngIf="status == 'failed'">No se pudo crear el empleado</small>
+    <small class="small2" *ngIf="status == 'success'">Creado correctamente</small>
+
+  </div >
+  </form>
+  </div>
+  <div class="container" *ngIf="show" style="margin-bottom:70px;">
+    <div class="content">
+      <div class="tittle">
+        Nombre:
+      </div>
+      <div class="text">
+        {{empleado.name | titlecase}}
+      </div>
+      <div class="tittle">
+        Salario:
+      </div>
+      <div class="text">
+        {{empleado.salary | currency}}
+      </div>
+      <div class="tittle">
+        Edad:
+      </div>
+      <div class="text">
+        {{empleado.age | number}} años
+      </div>
+    </div>
+
+
+  </div>

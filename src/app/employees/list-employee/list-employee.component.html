@@ -1,0 +1,29 @@
+<div class="container" style="display:flex">
+  <h1 class="title" style=" margin: 60px auto 20px auto">
+    Lista de empleados
+  </h1>
+</div>
+<div  class="row" style="width: auto; margin: 20px 40px 70px 40px;  z-index: -10;">
+  <div class="col-sm-4" *ngFor="let empleado of empleados; let i index" [routerLink] = "['/detail', empleado.id]" style="cursor:pointer;">
+    <div  class="card mb-3" style="width: auto; margin: 30px auto; padding: 10px 10px; box-shadow: 0 14px 28px rgba(0, 0, 0, 0.425); z-index: -10;">
+      <div class="row g-0">
+      <div class="col-md-4 col-4"  style = " margin: 20px 0 ">
+        <img *ngIf="empleado.employee_age > 30" style="border-radius:20px; box-shadow: 0 14px 28px rgba(0, 0, 0, 0.253); width: 120px; height:95px; object-fit: cover;"
+            src="https://images.unsplash.com/photo-1552641156-93ea2a5f78e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by." class="img-fluid rounded-start" alt="employee image">
+        <img *ngIf="empleado.employee_age <= 30" style="border-radius:20px; box-shadow: 0 14px 28px rgba(0, 0, 0, 0.253); width: 120px; height:95px; object-fit: cover;"
+            src="https://images.unsplash.com/photo-1535295972055-1c762f4483e5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG9" class="img-fluid rounded-start" alt="employee image">
+      </div>
+      <div class="col-md-8 col-8">
+      <div class="card-body">
+        <h5 class="card-title">Name: {{empleado.employee_name | titlecase}}</h5>
+        <p class="card-text">Salary: {{empleado.employee_salary | currency}}</p>
+        <p class="card-text">Age: {{empleado.employee_age }}</p>
+
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+</div>
+
+

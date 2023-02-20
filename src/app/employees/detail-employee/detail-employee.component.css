@@ -1,0 +1,37 @@
+p{
+  color: rgb(102, 102, 102);
+  text-align: left;
+  font-size: 13px;
+
+}
+
+image{
+  border-radius: 12px;
+}
+
+small{
+  display: flex;
+  color: white;
+  background-color: red;
+  width: 100%;
+  font-size: 14px;
+
+}
+
+.small3{
+  display: flex;
+  color: white;
+  background-color: red;
+  width: 100%;
+  font-size: 14px;
+  margin-top: 70px;
+
+}
+
+.small2{
+  color: white;
+  background-color: rgb(6, 134, 23);
+  width: 100%;
+  font-size: 14px;
+
+}

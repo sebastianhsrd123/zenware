@@ -1,0 +1,61 @@
+p{
+  color: rgb(32, 32, 32);
+  text-align: left;
+  font-size: 13px;
+
+}
+
+small{
+  display: flex;
+  color: white;
+  background-color: red;
+  width: 100%;
+  font-size: 14px;
+  border-radius: 13px;
+
+}
+
+.small3{
+  display: flex;
+  color: white;
+  background-color: red;
+  width: 100%;
+  font-size: 14px;
+  margin-top: 70px;
+  border-radius: 13px;
+
+}
+
+.small2{
+  color: white;
+  background-color: rgb(6, 134, 23);
+  width: 100%;
+  font-size: 14px;
+
+}
+.title{
+
+  margin: auto 10px;
+
+}
+
+.content{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.tittle{
+  display:flex;
+  margin-left:15px;
+  font-size: 17px;
+  font-weight: bolder;
+  color: rgb(85, 85, 85);
+}
+
+.text{
+  display:flex;
+  margin:auto;
+
+}
+

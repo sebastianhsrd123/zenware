@@ -1,0 +1,100 @@
+<small class="small3" *ngIf="!empleado">No se puede mostrar la pagina debido a que tiene demasiados requests (ERROR 429)</small>
+
+<div class="card" style="width: 24rem; display:flex; margin:auto; margin-top:70px; margin-bottom:60px"  *ngIf="empleado" >
+  <img class="card-img-top" *ngIf="empleado.employee_age > 30"
+    src="https://images.unsplash.com/photo-1552641156-93ea2a5f78e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by."
+    alt="Card image cap" style="max-height:350px; object-fit: cover;">
+  <img class="card-img-top" *ngIf="empleado.employee_age <= 30" style="max-height:350px; object-fit: cover;"
+    src="https://images.unsplash.com/photo-1535295972055-1c762f4483e5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG9"
+    alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Datos Personales</h5>  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <p>Nombre</p>
+      {{empleado.employee_name | titlecase}}</li>
+    <li class="list-group-item">
+      <p>Salario</p>
+      {{empleado.employee_salary | currency}}</li>
+    <li class="list-group-item">
+      <p>Edad</p>
+      {{empleado.employee_age }}</li>
+  </ul>
+  <div class="card-body" style="display:flex;margin:auto; flex-direction:row;">
+    <button type="button" (click)="showUpdate();" style="display:flex;margin-right:5px;" class="btn btn-primary">Actualizar</button>
+    <button type="button" (click)="deleteEmployee();" style="display:flex;margin-left:5px;" class="btn btn-danger">Eliminar</button>
+  </div>
+</div>
+<small *ngIf="delete=='false'">Los datos no fueron eliminados</small>
+  <small class="small2" *ngIf="delete=='true'">Datos eliminados correctamente</small>
+
+<div class="container" *ngIf="show" style="margin-bottom:60px" >
+<form [formGroup]="updateForm"  (ngSubmit)="updateEmployee();">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Ingrese el nuevo nombre</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese nombre" formControlName="name">
+    <small class="form-text text-muted"
+    *ngIf=" updateForm.get('name')?.touched && updateForm.get('name')?.errors?.['required']">
+    El campo es requerido*
+</small>
+<small class="form-text text-muted"
+    *ngIf=" updateForm.get('name')?.touched && updateForm.get('name')?.errors?.['maxlength']">
+    El nombre no puede tener mas de 30 caracteres*
+</small>
+<small class="form-text text-muted"
+    *ngIf=" updateForm.get('name')?.touched && updateForm.get('name')?.errors?.['minlength']">
+    El nombre debe tener al menos 3 caracteres*
+</small>
+<small class="form-text text-muted"
+    *ngIf=" updateForm.get('name')?.touched && updateForm.get('name')?.errors?.['pattern']">
+    Utilice solo letras y un espaciado por nombre*
+</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail2">Ingrese el nuevo salario</label>
+    <input type="text" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Ingrese salario" formControlName="salary">
+    <small class="form-text text-muted"
+        *ngIf=" updateForm.get('salary')?.touched && updateForm.get('salary')?.errors?.['required']">
+        El campo es requerido*
+    </small>
+    <small class="form-text text-muted"
+        *ngIf=" updateForm.get('salary')?.touched && updateForm.get('salary')?.errors?.['maxlength']">
+        El salario no puede tener mas de 20 cifras*
+    </small>
+    <small class="form-text text-muted"
+        *ngIf=" updateForm.get('salary')?.touched && updateForm.get('salary')?.errors?.['minlength']">
+        El salario debe tener al menos 4 cifras*
+    </small>
+    <small class="form-text text-muted"
+        *ngIf=" updateForm.get('salary')?.touched && updateForm.get('salary')?.errors?.['pattern']">
+        Utilice solo numeros*
+    </small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Ingrese la nueva edad</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Ingrese edad" formControlName="age">
+    <small class="form-text text-muted"
+        *ngIf=" updateForm.get('age')?.touched && updateForm.get('age')?.errors?.['required']">
+        El campo es requerido*
+    </small>
+    <small class="form-text text-muted"
+        *ngIf=" updateForm.get('age')?.touched && updateForm.get('age')?.errors?.['maxlength']">
+        La edad debe ser dos cifras*
+    </small>
+    <small class="form-text text-muted"
+        *ngIf=" updateForm.get('age')?.touched && updateForm.get('age')?.errors?.['minlength']">
+        La edad debe ser dos cifras*
+    </small>
+    <small class="form-text text-muted"
+        *ngIf=" updateForm.get('age')?.touched && updateForm.get('age')?.errors?.['pattern']">
+        Utilice solo numeros*
+    </small>
+  </div>
+  <div class="d-grid gap-2" style="margin-top:20px;">
+  <button type="submit" [disabled]="!updateForm.valid" class="btn btn-success">Actualizar datos</button>
+  <small *ngIf="status == 'failed'">No se pudo realizar la actualizacion</small>
+  <small class="small2" *ngIf="status == 'success'">Actualizacion correcta</small>
+
+</div>
+</form>
+</div>

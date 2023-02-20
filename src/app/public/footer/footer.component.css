@@ -1,0 +1,44 @@
+.contain{
+  display:flex;
+  width: 100%;
+  background-color: rgba(233, 227, 227, 0.74);
+  position: fixed;
+  bottom: 0;
+  height: 40px;
+}
+.icon1{
+  display:flex;
+  margin: auto;
+  width: 50%;
+  border-right: 1px solid gray;
+  cursor: pointer;
+  height: 100%;
+}
+
+.icon1:active{
+  color: rgb(92, 92, 184);
+  background-color: rgba(196, 195, 195, 0.74);;
+}
+
+.icon2{
+  display:flex;
+  margin: auto;
+  width: 50%;
+  cursor: pointer;
+  height: 100%;
+
+}
+.icon2:active{
+  color: rgb(92, 92, 184);
+  background-color: rgba(196, 195, 195, 0.74);;
+}
+
+span{
+  display:flex;
+  margin: auto;
+}
+
+i{
+  font-size: 30px;
+  color: rgb(126, 126, 238);
+}
